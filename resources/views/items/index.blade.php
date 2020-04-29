@@ -1,43 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-
-<style>
-    .uper {
-      margin-top: 40px;
-    }
-  </style>
-  <div class="card uper">
-    <div class="card-header">
-      Add Item
-    </div>
-    <div class="card-body">
-      @if ($errors->any())
-        <div class="alert alert-danger">
-          <ul>
-              @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-              @endforeach
-          </ul>
-        </div><br />
-      @endif
-        <form method="post" action="{{ route('items.insert') }}">
-            <div class="form-group">
-                @csrf
-                <label for="name col-md-5 col-sm-5" >Item Name:</label>
-                <input type="text" class="form-control" name="item_name"/>
-            </div>
-            <div class="form-group">
-                <label for="price">SKU Number :</label>
-                <input type="text" class="form-control" name="sku_no"/>
-            </div>
-            <div class="form-group">
-                <label for="quantity">Item Price :</label>
-                <input type="text" class="form-control" name="price"/>
-            </div>
-            <button type="submit" class="btn btn-primary">Create Item</button>
-        </form>
-    </div>
-  </div>
-
+@include('partials.messages')
+  <h1>Project Materials</h1>
+      {!! Form::open(['url' => 'items/submit']) !!}
+                <div class="form-group">
+                  {{Form::label('product_name', 'Product Name')}}
+                  {{Form::text('product_name', '', ['class' => 'form-control', 'placeholder' => 'Enter Product name'])}}
+                </div>
+                  <div class="form-group">
+                    {{Form::label('quantity', 'Quantity')}}
+                    {{Form::text('quantity', '', ['class' => 'form-control', 'placeholder' => 'Enter Product Quantity'])}}
+                  </div>
+                <div class="form-group">
+                  {{Form::label('date ', 'Date Received')}}
+                  {{Form::text('date', '', ['class' => 'form-control', 'placeholder' => 'month/date/year'])}}
+                </div>
+                  <div>
+                    {{Form::submit('Submit', ['class'=> 'btn btn-primary'])}}
+                  </div>
+      {!! Form::close() !!} 
 @endsection

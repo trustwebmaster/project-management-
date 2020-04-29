@@ -29,7 +29,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('projects/create/{company_id?}', 'ProjectsController@create');
     Route::post('/projects/adduser', 'ProjectsController@adduser')->name('projects.adduser');
     Route::get('items', 'itemsController');
-    Route::post('items/insert', 'itemsController@insert')->name('items.insert');
+    Route::post('items/submit', 'MessagesController@submit');
+    Route::get('/messages', 'ProductsController@getMessages');
+
 
     Route::resource('projects', 'ProjectsController');
     Route::resource('roles', 'RolesController');
@@ -37,7 +39,13 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', 'UsersController');
     Route::resource('items', 'itemsController');
     Route::resource('comments', 'CommentsController');
+    Route::resource('messages', 'MessagesController');
 
 
 
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('view-companies', 'AdminViewController@index')->name('companies.admin');
+    Route::get('view-users', 'AdminViewController@home')->name('users.admin');
 });

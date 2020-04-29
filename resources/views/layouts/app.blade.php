@@ -106,7 +106,31 @@
         @include('partials.success')
 
             <div class="row">
-                @yield('content')
+               @auth
+                @if(auth()->user()->isAdmin())
+                <div class="col-md-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="{{route('home')}}">Home</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('users.admin')}}">Users</a>
+                        </li>
+                        <li class="list-group-item">
+                        <a href="{{ route('companies.admin') }}">Companies</a>
+                        </li>
+                    </ul>
+                </div>  
+                 <div class="col-md-9">
+                     @yield('content')
+                 </div>
+                @else
+                    @yield('content')
+                @endif
+                @else
+                    @yield('content')
+                @endauth
+
 
             </div>
          </div>

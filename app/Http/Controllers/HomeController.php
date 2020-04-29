@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Task;
+use App\Company;
+use App\Project;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = User::all();
+        $companies = Company::all();
+        $projects = Project::all();
+        $tasks = Task::all();
+        $comments = Comment::all();
+        return view('home', compact('users', 'companies', 'projects', 'tasks', 'comments'));
     }
 }

@@ -64,5 +64,10 @@ class User extends Authenticatable
         return $this->morphMany('App\Comment', 'commentable');
     }
 
+    public function isAdmin()
+    {
+        return $this->admin == 1;
+    }
+
 
 }
