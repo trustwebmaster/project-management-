@@ -1,14 +1,33 @@
-@extends('layouts.app')
 
-@section('content')
-  <h1>Messages</h1>
-  @if(count($messages) > 0)
-    @foreach($messages as $message)
-      <ul class="list-group">
-        <li class="list-group-item">Product Name: {{$message->product_name}}</li>
-        <li class="list-group-item">Quantity: {{$message->quantity}}</li>
-        <li class="list-group-item">Date: {{$message->date}}</li>
-      </ul>
-    @endforeach
-  @endif
-@endsection
+<body>
+<div class="container col-md-8 col-sm-8">
+  <h2>Materials in stock </h2>
+  <table class="table table-bordered">
+    <thead class=".thead-dark">
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-@include('partials.messages')
+
   <h1>Project Materials</h1>
+     <div class="container col-md-4 col-sm-4 pull-left" >
       {!! Form::open(['url' => 'items/submit']) !!}
                 <div class="form-group">
                   {{Form::label('product_name', 'Product Name')}}
@@ -20,4 +21,9 @@
                     {{Form::submit('Submit', ['class'=> 'btn btn-primary'])}}
                   </div>
       {!! Form::close() !!} 
+      </div>
+      <div class="col-md-7 col-sm-7 pull-right">
+      @include('messages')
+      </div>
+      </div>
 @endsection
