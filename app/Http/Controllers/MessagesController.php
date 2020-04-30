@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Products;
+use APP\items;
 
 class MessagesController extends Controller
 {
@@ -27,10 +28,11 @@ class MessagesController extends Controller
       }
   
       public function getMessages(){
-        $messages = Products::all();
+        $messages = ["one", 'two' ,'three'];
   
         
       return view('messages')->with('messages', $messages);
+      
       }
       
 }

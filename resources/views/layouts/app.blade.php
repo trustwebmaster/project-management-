@@ -104,6 +104,8 @@
 
         @include('partials.errors')
         @include('partials.success')
+       
+
 
             <div class="row">
                @auth
