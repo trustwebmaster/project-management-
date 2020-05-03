@@ -10,7 +10,7 @@
   <div class="col-md-4" >
     <h2>Add items</h2>
     {!! Form::open(['url' => 'items/submit']) !!}
-      <div class="form-group">
+      <div class="form-group"> 
         {{Form::label('product_name', 'Product Name')}}
         {{Form::text('product_name', '', ['class' => 'form-control', 'placeholder' => 'Enter Product name'])}}
       </div>

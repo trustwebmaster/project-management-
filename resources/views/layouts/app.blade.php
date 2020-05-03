@@ -12,9 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/Chart.min.css') }}" rel="stylesheet">
 
     <script src="https://use.fontawesome.com/874dbadbd7.js"></script>
-
+    <script src="{{ asset('js/Chart.min.js') }}"></script>
 
 </head>
 <body>
