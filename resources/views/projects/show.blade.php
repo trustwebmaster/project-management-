@@ -65,7 +65,6 @@
       <li><a href="/project/{{ $project->id }}/add-items"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Materials</a></li>
       <li><a href="/project/create"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create new project</a></li>
       <li><a href="/projects"><i class="fa fa-user-o" aria-hidden="true"></i> My projects</a></li>
-      <li><a href="/projects"><i class="fa fa-user-o" aria-hidden="true"></i> My projects</a></li>
       <!-- Button trigger modal -->
       <br/>
       @if($project->user_id == Auth::user()->id)
@@ -158,7 +157,11 @@
   var data = {!! $item !!}
   var used = data.used;
   var labels = used.map( item => item.created_at );
-  var data = used.map( item => item.quantity );
+  var quantity = data.quantity;
+  var data = used.map( item => {
+    quantity = quantity - item.quantity;
+    return quantity;
+  });
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
