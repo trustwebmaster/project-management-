@@ -1,19 +1,31 @@
 
 @extends('layouts.app')
 @section('content')
-<div class="col-md-6 col-lg-6  col-md-offset-2 col-lg-offset-2">
-<div class ="panel panel-primary ">
-    <div class="panel-heading">Projects <a class="pull-right btn btn-primary btn-sm" href="/companies">
-        Create New</a></li></div>
-    <div class="panel-body">
-
-      <ul class="list-group">
-
-        @foreach($projects  as $project)
-      <li class="list-group-item"><a href="/projects/{{ $project->id }}">{{ $project->name }}</a></li>
-          @endforeach
-      </ul>
+  <div class="col-md-4">
+    <div class="panel">
+      <div class="panel-heading">
+        <span class="panel-title">Quick Access</span>
+      </div>
+      <div class="panel-body">
+        <a class="btn btn-primary" href="/projects/create">Add project</a>
+      </div>
     </div>
-</div>
-</div>
+  </div>
+  <div class="col-md-8">
+    <div class ="panel">
+      <div class="panel-heading">
+        <span class="panel-title">Projects</span>
+        {{-- <a class="pull-right btn btn-primary btn-sm" href="/companies">
+          Create New
+        </a> --}}
+      </div>
+      <div class="panel-body">
+        <div class="list-group">
+          @foreach($projects  as $project)
+            <a href="/projects/{{ $project->id }}" class="list-group-item">{{ $project->name }}</a>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection

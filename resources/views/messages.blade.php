@@ -1,7 +1,6 @@
-
-<body>
-<div class="container col-md-8 col-sm-8">
+<div class="">
   <h2>Materials in stock </h2>
+  <br>
   <table class="table table-bordered">
     <thead class=".thead-dark">
       <tr>
@@ -11,23 +10,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      @foreach ($items as $item)    
+        <tr>
+          <td>{{ $item['product_name'] }}</td>
+          <td>{{ $item['quantity'] }}</td>
+          <td>{{ $item['created_at'] }}</td>
+        </tr>
+      @endforeach
     </tbody>
   </table>
 </div>
-</body>
-</html>
