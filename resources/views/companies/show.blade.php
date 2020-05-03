@@ -8,7 +8,7 @@
     </div>
 
     <div class="row col-md-9 col-lg-9 col-sm-9" style="background-color:white; margin:10px;" >
-        <a href="/projects/create" class="pull-right btn btn-default btn-sm">Add Project</a>
+        {{-- <a href="/projects/create" class="pull-right btn btn-default btn-sm">Add Project</a> --}}
         @foreach($company->projects as $project)
          <div class="col-lg-4 col-md-4 col-sm-4">
          <h2>{{ $project->name }}</h2>

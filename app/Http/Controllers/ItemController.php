@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\Project;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,12 +23,12 @@ class ItemController extends Controller
         return view('items.index');
     }
 
-    public function index()
+    public function index(Project $project)
     {
         if (Auth::check()) {
-            $items = \App\Product::where('user_id', Auth::user()->id)->get();
+            $items = \App\Product::where('user_id', Auth::user()->id)->where('project_id', $project->id)->get();
 
-            return view('items.index', ['items'=> $items]);
+            return view('items.index', ['items'=> $items, 'project' => $project]);
 
         }
         return view('auth.login');
@@ -130,5 +131,26 @@ class ItemController extends Controller
     public function destroy(Item $items)
     {
         //
+    }
+
+    public function update_stock(Request $request) {
+        $keys = $request->all();
+
+        foreach( $keys as $key => $value ) {
+
+            if ( strpos($key, '_pid_') !== false ){
+                $id = explode( '_pid_', $key )[1];
+                $used = new \App\StockUsed();
+                $used->project_id = $request->project_id;
+                $used->product_id = $id;
+                $used->quantity = $value;
+                $used->save();
+            }
+
+        }
+
+
+
+        return redirect()->back();
     }
 }

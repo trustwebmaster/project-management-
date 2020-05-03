@@ -11,4 +11,8 @@ class Product extends Model
     'quantity',
     'date',
     ];
+
+    public function used() {
+        return $this->hasMany('\App\StockUsed');
+    }
 }

@@ -121,13 +121,12 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
-
         // $project = Project::where('id', $project->id )->first();
         $project = Project::find($project->id);
 
         $comments = $project->comments;
-        return view('projects.show', ['project' => $project, 'comments' => $comments]);
+        $items = \App\Product::with('used')->where('project_id', $project->id)->get();
+        return view('projects.show', ['project' => $project, 'comments' => $comments, 'items' => $items]);
     }
 
     /**
@@ -190,4 +189,61 @@ class ProjectController extends Controller
 
         return back()->withInput()->with('error', 'project could not be deleted');
     }
+
+    public function printPdf (Project $project) {
+        $html = "<h1>$project->name</h1>";
+        $html .= "<h2>Description</h2>";
+        $html .= "<p>$project->description</p>";
+        $html .= "<h2>Stock</h2>";
+
+        $stock = \App\Product::where('project_id', $project->id)->get();
+
+        if ($stock) {
+            $html .= '<table><thead>';
+            $html .= '<tr>';
+            $html .= '<th>Item</th>';
+            $html .= '<th>Initial qty</th>';
+            $html .= '<th>Used qty</th>';
+            $html .= '<th>Remaining qty</th>';
+            $html .= '</tr>';
+            $html .= '</thead>';
+            $html .= '<tbody>';
+            
+            foreach( $stock as $item ) {
+                logger( $item );
+                $used = (int) $this->_calUsedStock( $item );
+                $quantity = ( int ) $item->quantity;
+                $html .= '<tr>';
+                $html .= '<td>' . $item->product_name . '</td>';
+                $html .= '<td>' . $quantity . '</td>';
+                $html .= '<td>' . $used . '</td>';
+                $html .= '<td>'. ( $quantity - $used ) .'</td>';
+                $html .= '</tr>';
+            }
+
+            $html .= '</tbody>';
+            $html .= '</table>';
+
+            $mpdf = new \Mpdf\Mpdf();
+
+            $mpdf->WriteHTML($html);
+
+            // Output a PDF file directly to the browser
+            return $mpdf->Output();
+        }
+
+
+    }
+
+    private function _calUsedStock($item){
+        $total = 0;
+        $used = $item->used;
+
+        foreach ( $used as $item ) {
+            $total = $total + $item->quantity;
+        }
+
+        return $total;
+    }
+
 }

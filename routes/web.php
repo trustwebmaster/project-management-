@@ -40,6 +40,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('messages', 'MessageController');
 });
 
+Route::get('/project/{project}/items', 'ItemController@index');
+Route::post('/project/{project}/update-stock', 'ItemController@update_stock');
+Route::get('/project/{project}/print', 'ProjectController@printPdf');
+
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('view-companies', 'AdminViewController@index')->name('companies.admin');
     Route::get('view-users', 'AdminViewController@home')->name('users.admin');

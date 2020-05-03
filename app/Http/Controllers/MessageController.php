@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use APP\items;
+use App\Project;
 use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
@@ -23,6 +24,7 @@ class MessageController extends Controller
         $message->quantity = $request->input('quantity');
         $message->date = $request->input('date');
         $message->user_id = Auth::user()->id;
+        $message->project_id = $request->project_id;
         // Save Message
         $message->save();
   
