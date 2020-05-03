@@ -1,10 +1,23 @@
 
 @extends('layouts.app')
 @section('content')
-<div class="col-md-6 col-lg-6  col-md-offset-2 col-lg-offset-2">
-<div class ="panel panel-primary ">
-    <div class="panel-heading">Companies <a class="pull-right btn btn-primary btn-sm" href="/companies/create">
-        Create New</a></li></div>
+<div class="col-md-4">
+  <div class="panel">
+    <div class="panel-heading" >
+      <span class="panel-title">Quick Access</span>
+    </div>
+    <div class="panel-body">
+      <a class="btn btn-primary" href="/companies/create">
+        Create New
+      </a>
+    </div>
+  </div>
+</div>
+<div class="col-md-8">
+<div class ="panel">
+    <div class="panel-heading">
+      <span class="panel-title">Companies</span>
+    </div>
     <div class="panel-body">
 
       <ul class="list-group">

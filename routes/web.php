@@ -28,13 +28,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('projects/create/{company_id?}', 'ProjectController@create');
     Route::post('/projects/adduser', 'ProjectController@adduser')->name('projects.adduser');
-    // Route::get('items', 'ItemController');
     Route::post('items/submit', 'MessageController@submit');
     Route::get('/messages', 'ProductController@getMessages');
 
 
-    Route::resource('projects', 'ProjectsController');
-    // Route::resource('roles', 'RolesController');
+    Route::resource('projects', 'ProjectController');
     Route::resource('tasks', 'TaskController');
     Route::resource('users', 'UserController');
     Route::resource('items', 'ItemController');
