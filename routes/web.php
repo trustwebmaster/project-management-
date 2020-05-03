@@ -24,25 +24,22 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::resource('companies', 'CompaniesController');
+    Route::resource('companies', 'CompanyController');
 
-    Route::get('projects/create/{company_id?}', 'ProjectsController@create');
-    Route::post('/projects/adduser', 'ProjectsController@adduser')->name('projects.adduser');
-    Route::get('items', 'itemsController');
-    Route::post('items/submit', 'MessagesController@submit');
-    Route::get('/messages', 'ProductsController@getMessages');
+    Route::get('projects/create/{company_id?}', 'ProjectController@create');
+    Route::post('/projects/adduser', 'ProjectController@adduser')->name('projects.adduser');
+    // Route::get('items', 'ItemController');
+    Route::post('items/submit', 'MessageController@submit');
+    Route::get('/messages', 'ProductController@getMessages');
 
 
     Route::resource('projects', 'ProjectsController');
-    Route::resource('roles', 'RolesController');
-    Route::resource('tasks', 'TasksController');
-    Route::resource('users', 'UsersController');
-    Route::resource('items', 'itemsController');
-    Route::resource('comments', 'CommentsController');
-    Route::resource('messages', 'MessagesController');
-
-
-
+    // Route::resource('roles', 'RolesController');
+    Route::resource('tasks', 'TaskController');
+    Route::resource('users', 'UserController');
+    Route::resource('items', 'ItemController');
+    Route::resource('comments', 'CommentController');
+    Route::resource('messages', 'MessageController');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
