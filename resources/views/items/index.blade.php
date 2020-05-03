@@ -14,6 +14,7 @@
         {{Form::label('product_name', 'Product Name')}}
         {{Form::text('product_name', '', ['class' => 'form-control', 'placeholder' => 'Enter Product name'])}}
       </div>
+    <input type="hidden" name="project_id" value="{{ $project->id }}">
       <div class="form-group">
         {{Form::label('quantity', 'Quantity')}}
         {{Form::text('quantity', '', ['class' => 'form-control', 'placeholder' => 'Enter Product Quantity'])}}
