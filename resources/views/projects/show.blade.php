@@ -91,6 +91,12 @@
           Update stock
         </button>
       </li>
+      <br />
+      <li>
+        <a href="/project/{{ $project->id }}/print" class="btn btn-success btn-sm">
+          Print PDF
+        </a>
+      </li>
     </ol>
     <hr/>
     <h4>Add members</h4>
@@ -166,7 +172,6 @@
           ],
           borderColor: [
               'rgba(255, 99, 132, 1)',
-
           ],
           borderWidth: 1
       } 
