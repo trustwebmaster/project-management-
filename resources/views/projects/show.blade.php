@@ -62,7 +62,7 @@
     <ol class="list-unstyled">
       <li><a href="/projects/{{ $project->id }}/edit">
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a></li>
-      <li><a href="/project/{{ $project->id }}/add-items"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Materials</a></li>
+      <li><a href="/project/{{ $project->id }}/items"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Materials</a></li>
       <li><a href="/project/create"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create new project</a></li>
       <li><a href="/projects"><i class="fa fa-user-o" aria-hidden="true"></i> My projects</a></li>
       <!-- Button trigger modal -->
